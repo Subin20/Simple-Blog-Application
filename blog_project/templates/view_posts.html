@@ -1,0 +1,43 @@
+<h2>All Posts</h2>
+<!--{% for post in posts %}-->
+<!--  <div>-->
+<!--    <h3><a href="{% url 'view_single_post' post.pk %}">{{ post.title }}</a></h3>-->
+<!--    <p>{{ post.content|truncatewords:30 }}</p>-->
+<!--    <small>By {{ post.author }} on {{ post.created_at }}</small>-->
+<!--    {% if post.author == user %}-->
+<!--      <a href="{% url 'update_post' post.pk %}">Edit</a>-->
+<!--      <a href="{% url 'delete_post' post.pk %}">Delete</a>-->
+<!--    {% endif %}-->
+<!--  </div>-->
+<!--{% endfor %}-->
+<!--<div>-->
+<!--  <span class="step-links">-->
+<!--    {% if posts.has_previous %}-->
+<!--      <a href="?page=1">&laquo; first</a>-->
+<!--      <a href="?page={{ posts.previous_page_number }}">previous</a>-->
+<!--    {% endif %}-->
+<!--    <span class="current">-->
+<!--      Page {{ posts.number }} of {{ posts.paginator.num_pages }}.-->
+<!--    </span>-->
+<!--    {% if posts.has_next %}-->
+<!--      <a href="?page={{ posts.next_page_number }}">next</a>-->
+<!--      <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>-->
+<!--    {% endif %}-->
+<!--  </span>-->
+<!--</div>-->
+
+<div class="container mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for post in posts %}
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <h3 class="text-lg font-bold">{{ post.title }}</h3>
+      <p class="text-sm text-gray-700">{{ post.content|truncatewords:20 }}</p>
+      <a href="{% url 'view_single_post' post.pk %}" class="text-blue-500 mt-2 inline-block">Read More</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-6">
+    <!-- Pagination links -->
+  </div>
+</div>

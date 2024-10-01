@@ -1,0 +1,11 @@
+<h2>Profile</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+
+    {% if user.is_authenticated %}
+    <p>Hello, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+    <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Sign Up</a></p>
+    {% endif %}

@@ -1,0 +1,7 @@
+<h2>{{ post.title }}</h2>
+<p>{{ post.content }}</p>
+<small>Posted by {{ post.author }} on {{ post.created_at }}</small>
+{% if post.author == user %}
+  <a href="{% url 'update_post' post.pk %}">Edit</a>
+  <a href="{% url 'delete_post' post.pk %}">Delete</a>
+{% endif %}
